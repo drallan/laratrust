@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+    DocumentRoot /var/www/laravel56/public
+    ServerAdmin dale@cybercat.co.za
+    ServerName laravel56.local
+
+    TransferLog /var/log/apache2/access.log
+    ErrorLog /var/log/apache2/error.log
+
+    <Directory /var/www/laravel56/public>
+		RewriteEngine On
+
+		# Redirect Trailing Slashes...
+		RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteRule ^ index.php [L]
+    </Directory>
+</VirtualHost>
