@@ -35,7 +35,7 @@
                             <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->client->name }}</td>
+                                <td>{{ $user->client_id }}</td>
                                 <td>
                                     @if(!empty($user->roles))
                                         @php
@@ -46,7 +46,7 @@
                                         @endforeach
                                     @endif
                                 </td>
-                                @permission('user-manage')
+                                @permission('update-acl')
                                 <td class="btn-group">
                                     {!! link_to_route('users.edit', 'Edit', ['id' => $user->id], ['class' => 'btn btn-sm btn-warning']) !!}
                                     {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style'=>'display:inline']) !!}
