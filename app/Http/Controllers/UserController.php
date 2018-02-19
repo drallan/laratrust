@@ -12,8 +12,8 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:users-manage', ['except' => 'index']);
-        $this->middleware('role:broker', ['only' => 'index']);
+        $this->middleware('permission:update-acl');
+
     }
     /**
      * Display a listing of the resource.
@@ -23,10 +23,8 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $query = User::with('client')->orderBy('name', 'ASC');
-        if(\Auth::user()->client_id != Client::DEFAULT_CLIENT_ID) {
-            $query->where('client_id', \Auth::user()->client_id);
-        }
+        $query = User::orderBy('name', 'ASC');
+
         $users = $query->paginate(10);
 
         return view('users.index', compact('users'))->with('i', ($request->input('page', 1) - 1) * 10);

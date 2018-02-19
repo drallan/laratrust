@@ -10,7 +10,7 @@ class PermissionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:sysadmin');
+        $this->middleware('permission:update-acl');
     }
 	/**
 	 * Display a listing of the resource.

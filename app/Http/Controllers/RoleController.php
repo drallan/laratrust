@@ -10,7 +10,7 @@ class RoleController extends Controller {
 
     public function __construct()
     {
-        $this->middleware('permission:sysadmin');
+        $this->middleware('permission:update-acl');
     }
 
     /**
