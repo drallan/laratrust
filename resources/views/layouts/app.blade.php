@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -26,7 +26,25 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.date-picker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+            $('.year-picker').datepicker({
+                format: 'yyyy',
+                startView: 2,
+                viewMode: "years",
+                minViewMode: "years"
+            });
+            $('.onchangeSubmit').change(function() {
+                $(this).closest('form').submit();
+            });
+        });
+    </script>
+
+    @stack('scripts')
 
     <script>
         $('#flash-overlay-modal').modal();

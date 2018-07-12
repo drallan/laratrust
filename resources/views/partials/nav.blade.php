@@ -19,16 +19,14 @@
                     System
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    @permission('superadministrator')
-                        <li><a class="dropdown-item" href="{{route('home')}}">Brokers</a></li>
-                    @endpermission
+                    <li><a class="dropdown-item" href="{{route('clients.index')}}">Clients</a></li>
                     <li class="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#">Users</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{route('home')}}">User Management</a></li>
+                            <li><a class="dropdown-item" href="{{route('users.index')}}">User Management</a></li>
                             @permission('acl-manage')
-                                <li><a class="dropdown-item" href="{{route('roles.index')}}">Roles</a></li>
-                                <li><a class="dropdown-item" href="{{route('permissions.index')}}">Permissions</a></li>
+                            <li><a class="dropdown-item" href="{{route('roles.index')}}">Roles</a></li>
+                            <li><a class="dropdown-item" href="{{route('permissions.index')}}">Permissions</a></li>
                             @endpermission
                         </ul>
                     </li>
