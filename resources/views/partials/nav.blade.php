@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
             </li>
             @if (!Auth::guest())
             <li class="nav-item dropdown">
@@ -20,16 +20,12 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" href="{{route('clients.index')}}">Clients</a></li>
-                    <li class="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#">Users</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{route('users.index')}}">User Management</a></li>
-                            @permission('acl-manage')
-                            <li><a class="dropdown-item" href="{{route('roles.index')}}">Roles</a></li>
-                            <li><a class="dropdown-item" href="{{route('permissions.index')}}">Permissions</a></li>
-                            @endpermission
-                        </ul>
-                    </li>
+                    <li><a class="dropdown-item" href="{{route('users.index')}}">Users</a></li>
+                    @permission('acl-manage')
+                        <li><a class="dropdown-item" href="{{route('roles.index')}}">Roles</a></li>
+                        <li><a class="dropdown-item" href="{{route('permissions.index')}}">Permissions</a></li>
+                    @endpermission
+
                 </ul>
             </li>
             @endif
