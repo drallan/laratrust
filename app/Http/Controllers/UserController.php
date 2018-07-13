@@ -15,8 +15,11 @@ class UserController extends Controller
         $this->middleware('permission:update-acl');
 
     }
+
     /**
      * Display a listing of the resource.
+     *
+     * @param Request $request
      *
      * @return \Illuminate\Http\Response
      */
