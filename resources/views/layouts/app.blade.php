@@ -10,8 +10,12 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -25,8 +29,6 @@
         </main>
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}"></script>
     <script>
         $(document).ready(function () {
             $('.date-picker').datepicker({
