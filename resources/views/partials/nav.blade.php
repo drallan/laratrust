@@ -17,25 +17,25 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle navbarDropdownMenuLink" id="companyNavLink" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">System</a>
-          <ul class="dropdown-menu" aria-labelledby="companyNavLink">
+          <ul class="dropdown-menu" aria-labelledby="systemNavLink">
             <li><a class="dropdown-item" href="{{route('clients.index')}}">Clients</a></li>
             <li class="dropdown-submenu">
               <a class="dropdown-item" href="#">Users</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{{route('users.index')}}">Search</a></li>
-                @permission('acl-manage')
-                <li><a class="dropdown-item" href="{{route('roles.index')}}">Roles</a></li>
-                <li><a class="dropdown-item" href="{{route('permissions.index')}}">Permissions</a></li>
-                @endpermission
+
               </ul>
             </li>
+
+            @permission('acl-manage')
             <li class="dropdown-submenu">
               <a class="dropdown-item" href="#">Security</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/roles">Roles</a></li>
-                <li><a class="dropdown-item" href="/permissions">Permissions</a></li>
+              <li><a class="dropdown-item" href="{{route('roles.index')}}">Roles</a></li>
+              <li><a class="dropdown-item" href="{{route('permissions.index')}}">Permissions</a></li>
               </ul>
             </li>
+            @endpermission
           </ul>
         </li>
 
