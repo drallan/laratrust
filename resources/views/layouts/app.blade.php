@@ -22,8 +22,9 @@
         @include('partials.nav')
 
         <main class="py-4">
-            <div class="container">
-                @include('flash::message')
+            <div class="container-fluid">
+                @include('vendor.flash.message')
+                @include('partials.errors')
             </div>
             @yield('content')
         </main>
