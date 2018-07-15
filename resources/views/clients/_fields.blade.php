@@ -52,13 +52,6 @@
         </div>
 
         <div class="form-group m-2">
-            {!! Form::label('fax', 'Fax', ['class'=>'control-label']) !!}
-            <div>
-                {!! Form::text('fax', null, ['class'=>'form-control']) !!}
-            </div>
-        </div>
-
-        <div class="form-group m-2">
             <div class="pull-right">
                 <button type="submit" class="btn btn-primary">
                     {{ $button }}

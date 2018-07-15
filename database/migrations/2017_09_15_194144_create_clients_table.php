@@ -15,7 +15,6 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('brief_name', 15)->index();
             $table->string('name', 50)->index();
             $table->string('email', 50)->nullable()->index();
             $table->string('address')->nullable();
@@ -23,7 +22,6 @@ class CreateClientsTable extends Migration
             $table->string('postal_code', 10)->nullable();
             $table->string('phone', 20)->nullable();
             $table->string('cell', 20)->nullable();
-            $table->string('fax', 20)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
