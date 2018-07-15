@@ -10,7 +10,7 @@
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
       </li>
       @if (!Auth::guest())
@@ -23,10 +23,10 @@
               <a class="dropdown-item" href="#">Users</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{{route('users.index')}}">Search</a></li>
+                <li><a class="dropdown-item" href="{{route('users.create')}}">Create</a></li>
 
               </ul>
             </li>
-
             @permission('acl-manage')
             <li class="dropdown-submenu">
               <a class="dropdown-item" href="#">Security</a>
@@ -57,8 +57,7 @@
               Logout
             </a>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                  style="display: none;">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               {{ csrf_field() }}
             </form>
           </div>
