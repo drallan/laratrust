@@ -30,6 +30,8 @@
         </main>
     </div>
 
+    @include('partials._debug')
+
     <script>
         $(document).ready(function () {
             $('.date-picker').datepicker({
