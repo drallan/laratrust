@@ -54,7 +54,7 @@
 </div>
 
 <div class="form-group">
-    <div class="col-md-4 pull-right">
+    <div class="col-md-4 float-right">
         <button type="submit" class="btn btn-primary">
             {{ $button }}
         </button>

@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 margin-tb">
-                <div class="pull-left">
+                <div class="float-left">
                     <h2>Permission Management</h2>
                 </div>
-                <div class="pull-right">
+                <div class="float-right">
                     @permission('acl-manage')
                     <a class="btn btn-sm btn-success" href="{{ route('permissions.create') }}">Create New Permission</a>
                     @endpermission

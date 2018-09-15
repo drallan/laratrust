@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="card card-info mt-3">
             <div class="card-header">
-                <div class="pull-left">
+                <div class="float-left">
                     <h2>Client Management</h2>
                 </div>
                 <div class="float-md-right">

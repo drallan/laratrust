@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 margin-tb">
-                <div class="pull-left">
+                <div class="float-left">
                     <h2>Role Management</h2>
                 </div>
-                <div class="pull-right">
+                <div class="float-right">
                     @permission('acl-create')
                     <a class="btn btn-sm btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
                     @endpermission

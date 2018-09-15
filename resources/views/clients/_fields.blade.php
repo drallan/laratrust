@@ -52,7 +52,7 @@
         </div>
 
         <div class="form-group m-2">
-            <div class="pull-right">
+            <div class="float-right">
                 <button type="submit" class="btn btn-primary">
                     {{ $button }}
                 </button>

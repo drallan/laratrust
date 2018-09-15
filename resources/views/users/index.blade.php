@@ -7,10 +7,10 @@
                 <div class="card-header bg-secondary text-white">
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
-                            <div class="pull-left">
+                            <div class="float-left">
                                 <h3>User Management</h3>
                             </div>
-                            <div class="pull-right">
+                            <div class="float-right">
                                 @permission('user-manage')
                                 {!! link_to_route('users.create', 'Create New User', null, ['class' => 'btn btn-sm btn-success']) !!}
                                 @endpermission
