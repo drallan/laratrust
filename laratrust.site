@@ -1,12 +1,12 @@
 <VirtualHost *:80>
-    DocumentRoot /var/www/laravel56/public
+    DocumentRoot /var/www/laratrust/public
     ServerAdmin dale@cybercat.co.za
-    ServerName laravel56.local
+    ServerName laratrust.local
 
     TransferLog /var/log/apache2/access.log
     ErrorLog /var/log/apache2/error.log
 
-    <Directory /var/www/laravel56/public>
+    <Directory /var/www/laratrust/public>
 		RewriteEngine On
 
 		# Redirect Trailing Slashes...
