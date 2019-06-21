@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 
 Route::group(['middleware' => 'auth:web'], function() {

@@ -2,11 +2,26 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
 
-class User extends Authenticatable
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $client_id,
+ * @property string $password
+ * @property string $remember_token
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * @property Carbon $deleted_at
+ * @mixin \Eloquent
+ */
+
+class User extends Authenticatable implements MustVerifyEmail
 {
     use LaratrustUserTrait {
         hasRole as laratrustHasRole;
@@ -22,7 +37,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'client_id', 'email', 'password',
     ];
 
     /**
