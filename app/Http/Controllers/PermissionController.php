@@ -12,119 +12,98 @@ class PermissionController extends Controller
     {
         $this->middleware('permission:update-acl');
     }
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 
-	public function index()
-	{
-		$permissions = Permission::with('roles')->orderBy('id', 'DESC')->paginate(10);
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     *
+     * @return \View
+     */
+    public function index(Request $request)
+    {
+        $phrase = $request->get('phrase');
+        $permissions = Permission::with('roles')->orderBy('name', 'ASC');
+        if ($phrase) {
+            $permissions->where('name', 'LIKE', '%'.$phrase.'%');
+        }
+        $permissions = $permissions->get();
 
-		return view('permissions.index', compact('permissions'))->with('i');
-	}
+        return view('permissions.index', compact('permissions'));
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \View
+     */
+    public function create()
+    {
+        return view('permissions.create');
+    }
 
-	public function create()
-	{
-		return view('permissions.create');
-	}
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param PermissionRequest $request
+     *
+     * @return \Redirect
+     */
+    public function store(PermissionRequest $request)
+    {
+        Permission::create($request->all());
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+        Flash::success('Permission created successfully');
 
-	public function store(Request $request)
-	{
-		$this->validate(
-			$request, [
-				'name'         => 'required',
-				'display_name' => 'required',
-			]
-		);
+        return redirect()->route('permissions.index');
+    }
 
-		Permission::create($request->all());
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     *
+     * @return \View
+     */
+    public function edit($id)
+    {
+        $permission = Permission::find($id);
 
-		Flash::success('Permission created successfully');
+        return view('permissions.edit', compact('permission'));
+    }
 
-		return redirect()->route('permissions.index');
-	}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param PermissionRequest $request
+     * @param int               $id
+     *
+     * @return \Redirect
+     */
+    public function update(PermissionRequest $request, $id)
+    {
+        Permission::find($id)->update($request->all());
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		$permission = Permission::find($id);
+        Flash::success('Permission updated successfully');
 
-		return view('permissions.show', compact('permission'));
-	}
+        return redirect()->route('permissions.index');
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
-	{
-		$permission = Permission::find($id);
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     *
+     * @throws \Exception
+     *
+     * @return \Redirect
+     */
+    public function destroy($id)
+    {
+        Permission::find($id)->delete();
 
-		return view('permissions.edit', compact('permission'));
-	}
+        Flash::success('Permission deleted successfully');
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int                      $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, $id)
-	{
-		$this->validate(
-			$request, [
-				'name'         => 'required',
-				'display_name' => 'required',
-			]
-		);
-		Permission::find($id)->update($request->input());
-
-		Flash::success('Permission updated successfully');
-
-		return redirect()->route('permissions.index');
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-
-	public function destroy($id)
-	{
-		Permission::find($id)->delete();
-
-		Flash::success('Permission deleted successfully');
-
-		return redirect()->route('permissions.index');
-	}
+        return redirect()->route('permissions.index');
+    }
 }

@@ -41,7 +41,6 @@
                         @endif
                     </td>
                     <td>
-                        <a class="btn btn-sm btn-info" href="{{ route('permissions.show',$permission->id) }}">Show</a>
                         @permission('acl-update')
                         <a class="btn btn-sm btn-primary" href="{{ route('permissions.edit',$permission->id) }}">Edit</a>
                         {!! Form::open(['method' => 'DELETE','route' => ['permissions.destroy', $permission->id], 'style'=>'display:inline']) !!}
@@ -52,6 +51,5 @@
                 </tr>
             @endforeach
         </table>
-        {!! $permissions->render() !!}
     </div>
 @stop

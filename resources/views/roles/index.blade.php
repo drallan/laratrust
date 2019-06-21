@@ -42,7 +42,6 @@
                         @endif
                     </td>
                     <td>
-                        <a class="btn btn-sm btn-success" href="{{ route('roles.show',$role->id) }}">Show</a>
                         @permission('acl-manage')
                         <a class="btn btn-sm btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
                         {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style' => 'display:inline']) !!}
@@ -53,6 +52,5 @@
                 </tr>
             @endforeach
         </table>
-        {!! $roles->render() !!}
     </div>
 @stop
