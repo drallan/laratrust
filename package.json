@@ -15,7 +15,7 @@
         "bootstrap-datepicker": "^1.6.4",
         "bootswatch": "^4.1.1",
         "cross-env": "^5.1",
-        "jquery": "^3.2",
+        "jquery": "^3.5",
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "moment": "^2.18.1",
